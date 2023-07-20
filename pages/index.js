@@ -1,67 +1,36 @@
-import { Button, Card, ListGroup } from 'react-bootstrap';
+import { ListGroup } from 'react-bootstrap';
+import { useEffect, useState } from 'react';
 import { useAuth } from '../utils/context/authContext';
+import getAllJobs from '../utils/data/jobData';
 
 function Home() {
+  const [jobs, setJobs] = useState([]);
   const { user } = useAuth();
 
+  const categories = ['Wishlist', 'Applied', 'Interview', 'Offer', 'Rejected'];
+
+  useEffect(() => {
+    getAllJobs().then(setJobs);
+  }, []);
+
   return (
-    <div>
-      <h1>Hello {user.displayName}! Welcome to HireFrame!</h1>
-      <ListGroup key="sm" horizontal="sm" className="my-2">
-        <ListGroup.Item>
-          This ListGroup
-          <Card style={{ width: '15rem' }}>
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up the
-                bulk of the c content.
-              </Card.Text>
-              <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-          </Card>
-        </ListGroup.Item>
-        <ListGroup.Item>
-          renders horizontally
-          <Card style={{ width: '15rem' }}>
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up the
-                bulk of the cards content.
-              </Card.Text>
-              <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-          </Card>
-        </ListGroup.Item>
-        <ListGroup.Item>
-          on Headline
-          <Card style={{ width: '15rem' }}>
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up the
-                bulk of the c content.
-              </Card.Text>
-              <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-          </Card>
-        </ListGroup.Item>
-        <ListGroup.Item>
-          and above!
-          <Card style={{ width: '15rem' }}>
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up the
-                bulk of the c content.
-              </Card.Text>
-              <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-          </Card>
-        </ListGroup.Item>
-      </ListGroup>
-    </div>
+    <>
+      <div>
+        <h1>Hello {user.displayName}! Welcome to HireFrame!</h1>
+        <ListGroup key="sm" horizontal="sm" className="my-2">
+          {categories.map((cat) => (
+            <ListGroup.Item>
+              {cat}
+            </ListGroup.Item>
+          ))}
+        </ListGroup>
+      </div>
+      <div>
+        {jobs.map((job) => (
+          <h1>{job.title}</h1>
+        ))}
+      </div>
+    </>
   );
 }
 
