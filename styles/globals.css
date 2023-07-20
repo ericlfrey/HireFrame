@@ -1,4 +1,7 @@
 @import 'bootstrap/dist/css/bootstrap.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 html,
 body {
@@ -19,4 +22,8 @@ a {
 
 body {
   background-color: #88effd;
+}
+
+.container {
+  margin: 1rem;
 }
