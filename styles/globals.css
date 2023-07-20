@@ -23,3 +23,7 @@ a {
 body {
   background-color: #88effd;
 }
+
+.container {
+  margin: 1rem;
+}
