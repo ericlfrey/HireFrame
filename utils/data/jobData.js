@@ -20,6 +20,32 @@ const getAllJobs = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getAllFilteredJobs = () => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/jobs.json`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data) {
+        const allJobs = Object.values(data);
+        const wishlist = allJobs.filter((job) => job.status === 1);
+        const applied = allJobs.filter((job) => job.status === 2);
+        const interview = allJobs.filter((job) => job.status === 3);
+        const offer = allJobs.filter((job) => job.status === 4);
+        const rejected = allJobs.filter((job) => job.status === 5);
+        resolve({
+          wishlist, applied, interview, offer, rejected,
+        });
+      } else {
+        resolve([]);
+      }
+    })
+    .catch(reject);
+});
+
 // const getSingleItem = (firebaseKey) => new Promise((resolve, reject) => {
 //   fetch(`${endpoint}/items/${firebaseKey}.json`, {
 //     method: 'GET',
@@ -82,7 +108,7 @@ const getAllJobs = () => new Promise((resolve, reject) => {
 //     .catch(reject);
 // });
 
-// export {
-//   getAllJobs,
-// };
-export default getAllJobs;
+export {
+  getAllJobs, getAllFilteredJobs,
+};
+// export default getAllJobs;
