@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
-export default function JobDetailsModal({ categoryName }) {
+export default function AddJobModal({ categoryName }) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -52,6 +52,6 @@ export default function JobDetailsModal({ categoryName }) {
   );
 }
 
-JobDetailsModal.propTypes = {
+AddJobModal.propTypes = {
   categoryName: PropTypes.string.isRequired,
 };

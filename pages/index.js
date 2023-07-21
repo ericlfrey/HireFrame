@@ -2,7 +2,7 @@ import { ListGroup } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import { getAllFilteredJobs } from '../utils/data/jobData';
 import JobCard from '../components/JobCard/JobCard';
-import JobDetailsModal from '../components/JobDetailsModal/JobDetailsModal';
+import AddJobModal from '../components/AddJobModal/AddJobModal';
 
 function Home() {
   const [filteredJobs, setFilteredJobs] = useState([]);
@@ -25,7 +25,7 @@ function Home() {
           {categories.map((cat) => (
             <ListGroup.Item style={{ width: '19%' }} key={cat.name}>
               <h6>{cat.name}</h6>
-              <JobDetailsModal categoryName={cat.name} />
+              <AddJobModal categoryName={cat.name} />
               {cat.array?.map((job) => (
                 <JobCard
                   key={job.id}
