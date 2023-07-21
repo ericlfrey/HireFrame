@@ -20,7 +20,8 @@ function Home() {
   }, []);
 
   const addJob = (e) => {
-    console.log(e.target.id);
+    const [, category] = e.target.id.split('--');
+    console.log(category);
   };
   return (
     <>
