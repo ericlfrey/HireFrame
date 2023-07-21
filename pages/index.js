@@ -1,13 +1,11 @@
 import { ListGroup } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
-import { useAuth } from '../utils/context/authContext';
 import { getAllFilteredJobs } from '../utils/data/jobData';
 import JobCard from '../components/JobCard/JobCard';
 import JobDetailsModal from '../components/JobDetailsModal/JobDetailsModal';
 
 function Home() {
   const [filteredJobs, setFilteredJobs] = useState([]);
-  const { user } = useAuth();
   const categories = [
     { name: 'Wishlist', array: filteredJobs.wishlist },
     { name: 'Applied', array: filteredJobs.applied },
