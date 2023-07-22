@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Card } from 'react-bootstrap';
+import { deleteJob } from '../../utils/data/jobData';
 
-export default function JobCard({ job }) {
+export default function JobCard({ job, refreshPage }) {
   const handleDelete = () => {
-    console.log('buttstuff');
+    deleteJob(job.id).then(() => refreshPage());
   };
   return (
     <Card style={{ width: '90%' }}>
@@ -36,4 +37,5 @@ JobCard.propTypes = {
     title: PropTypes.string,
     userId: PropTypes.string,
   }).isRequired,
+  refreshPage: PropTypes.func.isRequired,
 };
