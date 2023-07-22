@@ -58,31 +58,31 @@ const getAllFilteredJobs = () => new Promise((resolve, reject) => {
 //     .catch(reject);
 // });
 
-// const postItem = (payload) => new Promise((resolve, reject) => {
-//   fetch(`${endpoint}/items.json`, {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(payload),
-//   })
-//     .then((response) => response.json())
-//     .then((data) => resolve(data))
-//     .catch(reject);
-// });
+const postNewJob = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/jobs.json`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
 
-// const patchItem = (payload) => new Promise((resolve, reject) => {
-//   fetch(`${endpoint}/items/${payload.firebaseKey}.json`, {
-//     method: 'PATCH',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(payload),
-//   })
-//     .then((response) => response.json())
-//     .then(resolve)
-//     .catch(reject);
-// });
+const patchJob = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/jobs/${payload.firebaseKey}.json`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
+});
 
 // const deleteItem = (firebaseKey) => new Promise((resolve, reject) => {
 //   fetch(`${endpoint}/items/${firebaseKey}.json`, {
@@ -109,6 +109,8 @@ const getAllFilteredJobs = () => new Promise((resolve, reject) => {
 // });
 
 export {
-  getAllJobs, getAllFilteredJobs,
+  getAllJobs,
+  getAllFilteredJobs,
+  postNewJob,
+  patchJob,
 };
-// export default getAllJobs;

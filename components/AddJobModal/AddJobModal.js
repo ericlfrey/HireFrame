@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { useAuth } from '../../utils/context/authContext';
+import { patchJob, postNewJob } from '../../utils/data/jobData';
 
 export default function AddJobModal({ categoryName }) {
   const [show, setShow] = useState(false);
@@ -53,7 +54,10 @@ export default function AddJobModal({ categoryName }) {
       status: getJobStatus(formInput.category),
       userId: user.uid,
     };
-    console.log(payload);
+    postNewJob(payload).then(({ name }) => {
+      const patchPayload = { id: name };
+      patchJob(patchPayload).then();
+    });
     handleClose();
   };
 
