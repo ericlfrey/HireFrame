@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { useAuth } from '../../utils/context/authContext';
 import { patchJob, postNewJob } from '../../utils/data/jobData';
 
-export default function AddJobModal({ categoryName }) {
+export default function AddJobModal({ categoryName, onUpdate }) {
   const [show, setShow] = useState(false);
   const [formInput, setFormInput] = useState({});
 
@@ -56,7 +56,7 @@ export default function AddJobModal({ categoryName }) {
     };
     postNewJob(payload).then(({ name }) => {
       const patchPayload = { id: name };
-      patchJob(patchPayload).then();
+      patchJob(patchPayload).then(() => onUpdate());
     });
     handleClose();
   };
@@ -125,4 +125,5 @@ export default function AddJobModal({ categoryName }) {
 
 AddJobModal.propTypes = {
   categoryName: PropTypes.string.isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };

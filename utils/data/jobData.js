@@ -72,7 +72,7 @@ const postNewJob = (payload) => new Promise((resolve, reject) => {
 });
 
 const patchJob = (payload) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/jobs/${payload.firebaseKey}.json`, {
+  fetch(`${endpoint}/jobs/${payload.id}.json`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',

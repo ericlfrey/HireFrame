@@ -14,8 +14,10 @@ function Home() {
     { name: 'Rejected', array: filteredJobs.rejected },
   ];
 
+  const getFilteredJobs = () => getAllFilteredJobs().then(setFilteredJobs);
+
   useEffect(() => {
-    getAllFilteredJobs().then(setFilteredJobs);
+    getFilteredJobs();
   }, []);
 
   return (
@@ -25,7 +27,10 @@ function Home() {
           {categories.map((cat) => (
             <ListGroup.Item style={{ width: '19%' }} key={cat.name}>
               <h6>{cat.name}</h6>
-              <AddJobModal categoryName={cat.name} />
+              <AddJobModal
+                categoryName={cat.name}
+                onUpdate={getFilteredJobs}
+              />
               {cat.array?.map((job) => (
                 <JobCard
                   key={job.id}
