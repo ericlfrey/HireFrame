@@ -1,12 +1,11 @@
-import { Button, ListGroup } from 'react-bootstrap';
+import { ListGroup } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
-import { useAuth } from '../utils/context/authContext';
 import { getAllFilteredJobs } from '../utils/data/jobData';
 import JobCard from '../components/JobCard/JobCard';
+import AddJobModal from '../components/AddJobModal/AddJobModal';
 
 function Home() {
   const [filteredJobs, setFilteredJobs] = useState([]);
-  const { user } = useAuth();
   const categories = [
     { name: 'Wishlist', array: filteredJobs.wishlist },
     { name: 'Applied', array: filteredJobs.applied },
@@ -15,23 +14,23 @@ function Home() {
     { name: 'Rejected', array: filteredJobs.rejected },
   ];
 
+  const getFilteredJobs = () => getAllFilteredJobs().then(setFilteredJobs);
+
   useEffect(() => {
-    getAllFilteredJobs().then(setFilteredJobs);
+    getFilteredJobs();
   }, []);
 
-  const addJob = (e) => {
-    const [, category] = e.target.id.split('--');
-    console.log(category);
-  };
   return (
     <>
       <div className="main-page-container">
-        <h1>Hello {user.displayName}! Welcome to HireFrame!</h1>
         <ListGroup key="sm" horizontal="sm" className="my-2">
           {categories.map((cat) => (
             <ListGroup.Item style={{ width: '19%' }} key={cat.name}>
               <h6>{cat.name}</h6>
-              <Button onClick={addJob} id={`btn--${cat.name}`}>+</Button>
+              <AddJobModal
+                categoryName={cat.name}
+                onUpdate={getFilteredJobs}
+              />
               {cat.array?.map((job) => (
                 <JobCard
                   key={job.id}
