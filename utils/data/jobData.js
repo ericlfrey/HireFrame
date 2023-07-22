@@ -46,17 +46,17 @@ const getAllFilteredJobs = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// const getSingleItem = (firebaseKey) => new Promise((resolve, reject) => {
-//   fetch(`${endpoint}/items/${firebaseKey}.json`, {
-//     method: 'GET',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//   })
-//     .then((response) => response.json())
-//     .then((data) => resolve(data))
-//     .catch(reject);
-// });
+const getJobById = (jobId) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/jobs/${jobId}.json`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
 
 const postNewJob = (payload) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/jobs.json`, {
@@ -84,17 +84,17 @@ const patchJob = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// const deleteItem = (firebaseKey) => new Promise((resolve, reject) => {
-//   fetch(`${endpoint}/items/${firebaseKey}.json`, {
-//     method: 'DELETE',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//   })
-//     .then((response) => response.json())
-//     .then((data) => resolve(data))
-//     .catch(reject);
-// });
+const deleteJob = (jobId) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/jobs/${jobId}.json`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
 
 // const getOrderDetails = (firebaseKey) => new Promise((resolve, reject) => {
 //   fetch(`${endpoint}/items.json?orderBy="orderID"&equalTo="${firebaseKey}"`, {
@@ -113,4 +113,6 @@ export {
   getAllFilteredJobs,
   postNewJob,
   patchJob,
+  getJobById,
+  deleteJob,
 };

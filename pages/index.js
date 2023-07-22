@@ -35,6 +35,7 @@ function Home() {
                 <JobCard
                   key={job.id}
                   job={job}
+                  refreshPage={getFilteredJobs}
                 />
               ))}
             </ListGroup.Item>
