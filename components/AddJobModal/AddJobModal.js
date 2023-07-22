@@ -63,7 +63,14 @@ export default function AddJobModal({ categoryName, onUpdate }) {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button
+        variant="outline-primary"
+        style={{
+          height: '1.5rem', width: '100%', fontSize: '1rem', textAlign: 'center', padding: '0',
+        }}
+        className="mb-2"
+        onClick={handleShow}
+      >
         +
       </Button>
 
