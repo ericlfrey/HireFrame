@@ -3,7 +3,7 @@ import { Form } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { patchJob } from '../../utils/data/jobData';
 
-export default function JobDetailsForm({ job }) {
+export default function JobDetailsForm({ job, refreshModal }) {
   const initialFormState = {
     jobTitle: job?.title || '',
     company: job?.company || '',
@@ -27,7 +27,7 @@ export default function JobDetailsForm({ job }) {
         id: job.id,
         title: formInput.jobTitle,
       };
-      patchJob(patchPayload).then(() => { });
+      patchJob(patchPayload).then(() => refreshModal());
     }
   };
 
@@ -83,4 +83,5 @@ JobDetailsForm.propTypes = {
     title: PropTypes.string,
     userId: PropTypes.string,
   }).isRequired,
+  refreshModal: PropTypes.func.isRequired,
 };

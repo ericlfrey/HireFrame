@@ -39,7 +39,7 @@ export default function JobCard({ job, refreshPage }) {
       <JobDetailsModal
         show={show}
         handleClose={handleClose}
-        job={job}
+        jobId={job.id}
       />
     </>
   );

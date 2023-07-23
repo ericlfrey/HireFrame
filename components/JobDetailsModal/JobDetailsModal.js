@@ -1,11 +1,22 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
 import JobDetailsForm from '../JobDetailsForm/JobDetailsForm';
+import { getJobById } from '../../utils/data/jobData';
 
 export default function JobDetailsModal({
-  show, handleClose, job,
+  show, handleClose, jobId,
 }) {
+  const [job, setJob] = useState({});
+
+  const getJob = () => getJobById(jobId).then(setJob);
+
+  useEffect(() => {
+    getJob();
+  }, []);
+
   return (
     <Modal show={show} onHide={handleClose} animation={false} size="xl">
       <Modal.Header style={{ display: 'flex', justifyContent: 'flex-end', border: 'none' }}>
@@ -23,7 +34,7 @@ export default function JobDetailsModal({
         </div>
       </Modal.Header>
       <Modal.Body>
-        <JobDetailsForm job={job} />
+        <JobDetailsForm job={job} refreshModal={getJob} />
       </Modal.Body>
     </Modal>
   );
@@ -32,13 +43,5 @@ export default function JobDetailsModal({
 JobDetailsModal.propTypes = {
   handleClose: PropTypes.func.isRequired,
   show: PropTypes.bool.isRequired,
-  job: PropTypes.shape({
-    company: PropTypes.string,
-    dateCreated: PropTypes.string,
-    description: PropTypes.string,
-    id: PropTypes.string,
-    status: PropTypes.number,
-    title: PropTypes.string,
-    userId: PropTypes.string,
-  }).isRequired,
+  jobId: PropTypes.string.isRequired,
 };
