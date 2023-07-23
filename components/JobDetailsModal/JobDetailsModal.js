@@ -1,6 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import PropTypes from 'prop-types';
+import JobDetailsForm from '../JobDetailsForm/JobDetailsForm';
 
 export default function JobDetailsModal({ show, handleClose, job }) {
   return (
@@ -19,7 +20,9 @@ export default function JobDetailsModal({ show, handleClose, job }) {
           <Modal.Body>{job.company}</Modal.Body>
         </div>
       </Modal.Header>
-      <Modal.Body>{job.title}</Modal.Body>
+      <Modal.Body>
+        <JobDetailsForm jobId={job.id} />
+      </Modal.Body>
     </Modal>
   );
 }
