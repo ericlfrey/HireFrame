@@ -3,7 +3,9 @@ import Modal from 'react-bootstrap/Modal';
 import PropTypes from 'prop-types';
 import JobDetailsForm from '../JobDetailsForm/JobDetailsForm';
 
-export default function JobDetailsModal({ show, handleClose, job }) {
+export default function JobDetailsModal({
+  show, handleClose, job,
+}) {
   return (
     <Modal show={show} onHide={handleClose} animation={false} size="xl">
       <Modal.Header style={{ display: 'flex', justifyContent: 'flex-end', border: 'none' }}>

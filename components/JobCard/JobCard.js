@@ -36,7 +36,11 @@ export default function JobCard({ job, refreshPage }) {
           </Card.Body>
         </a>
       </Card>
-      <JobDetailsModal show={show} handleClose={handleClose} job={job} />
+      <JobDetailsModal
+        show={show}
+        handleClose={handleClose}
+        job={job}
+      />
     </>
   );
 }

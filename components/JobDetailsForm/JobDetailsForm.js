@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import { patchJob } from '../../utils/data/jobData';
 
 export default function JobDetailsForm({ job }) {
   const initialFormState = {
@@ -18,6 +19,18 @@ export default function JobDetailsForm({ job }) {
     }));
   };
 
+  const handleEnter = (e) => {
+    e.preventDefault();
+    if (e.code === 'Enter') {
+      console.log(formInput);
+      const patchPayload = {
+        id: job.id,
+        title: formInput.jobTitle,
+      };
+      patchJob(patchPayload).then(() => { });
+    }
+  };
+
   return (
     <Form>
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -30,6 +43,7 @@ export default function JobDetailsForm({ job }) {
           onChange={handleChange}
           autoComplete="off"
           required
+          onKeyUp={handleEnter}
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
