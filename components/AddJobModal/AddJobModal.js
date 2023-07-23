@@ -1,24 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { useAuth } from '../../utils/context/authContext';
 import { patchJob, postNewJob } from '../../utils/data/jobData';
 
 export default function AddJobModal({ categoryName, onUpdate }) {
+  const initialState = {
+    company: '',
+    jobTitle: '',
+    category: categoryName,
+  };
   const [show, setShow] = useState(false);
-  const [formInput, setFormInput] = useState({});
+  const [formInput, setFormInput] = useState(initialState);
 
   const { user } = useAuth();
 
   const categories = ['Wishlist', 'Applied', 'Offer', 'Interview', 'Rejected'];
-
-  useEffect(() => {
-    setFormInput({
-      company: '',
-      jobTitle: '',
-      category: categoryName,
-    });
-  }, [categoryName]);
 
   const getJobStatus = (status) => {
     const statusMap = {

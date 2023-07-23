@@ -21,7 +21,7 @@ export default function JobDetailsModal({ show, handleClose, job }) {
         </div>
       </Modal.Header>
       <Modal.Body>
-        <JobDetailsForm jobId={job.id} />
+        <JobDetailsForm job={job} />
       </Modal.Body>
     </Modal>
   );
