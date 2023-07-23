@@ -1,41 +1,27 @@
-import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import PropTypes from 'prop-types';
 
-function JobDetailsModal() {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
+export default function JobDetailsModal({ show, handleClose }) {
   return (
-    <>
-      <Button variant="primary" onClick={handleShow}>
-        eye
-      </Button>
-
-      <Modal
-        show={show}
-        onHide={handleClose}
-        backdrop="static"
-        keyboard={false}
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>Modal title</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          I will not close if you click outside me. Don not even try to press
-          escape key.
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary">Understood</Button>
-        </Modal.Footer>
-      </Modal>
-    </>
+    <Modal show={show} onHide={handleClose} animation={false}>
+      <Modal.Header closeButton>
+        <Modal.Title>Modal heading</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={handleClose}>
+          Close
+        </Button>
+        <Button variant="primary" onClick={handleClose}>
+          Save Changes
+        </Button>
+      </Modal.Footer>
+    </Modal>
   );
 }
 
-export default JobDetailsModal;
+JobDetailsModal.propTypes = {
+  handleClose: PropTypes.func.isRequired,
+  show: PropTypes.bool.isRequired,
+};

@@ -1,19 +1,20 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Card, Modal } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 import { deleteJob } from '../../utils/data/jobData';
+import JobDetailsModal from '../JobDetailsModal/JobDetailsModal';
 
 export default function JobCard({ job, refreshPage }) {
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
 
   const handleDelete = () => {
-    setShow(false);
     deleteJob(job.id).then(() => refreshPage());
   };
+
   return (
     <>
       <Card style={{ width: '90%' }}>
@@ -35,21 +36,7 @@ export default function JobCard({ job, refreshPage }) {
           </Card.Body>
         </a>
       </Card>
-
-      <Modal show={show} onHide={handleClose} animation={false}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      <JobDetailsModal show={show} handleClose={handleClose} />
     </>
   );
 }
