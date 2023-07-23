@@ -22,12 +22,14 @@ export default function JobDetailsForm({ job, refreshModal }) {
   const handleEnter = (e) => {
     e.preventDefault();
     if (e.code === 'Enter') {
-      console.log(formInput);
       const patchPayload = {
         id: job.id,
         title: formInput.jobTitle,
+        company: formInput.company,
+        description: formInput.description,
       };
       patchJob(patchPayload).then(() => refreshModal());
+      e.target.blur();
     }
   };
 
@@ -56,6 +58,7 @@ export default function JobDetailsForm({ job, refreshModal }) {
           onChange={handleChange}
           autoComplete="off"
           required="required"
+          onKeyUp={handleEnter}
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
@@ -67,6 +70,10 @@ export default function JobDetailsForm({ job, refreshModal }) {
           onChange={handleChange}
           value={formInput.description}
           autoComplete="off"
+          onKeyUp={(e) => {
+            e.preventDefault();
+            patchJob({ id: job.id, description: formInput.description }).then(() => refreshModal());
+          }}
         />
       </Form.Group>
     </Form>

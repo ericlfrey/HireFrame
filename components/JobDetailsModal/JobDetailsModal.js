@@ -19,7 +19,14 @@ export default function JobDetailsModal({
 
   return (
     <Modal show={show} onHide={handleClose} animation={false} size="xl">
-      <Modal.Header style={{ display: 'flex', justifyContent: 'flex-end', border: 'none' }}>
+      <Modal.Header
+        style={{
+          display: 'flex',
+          justifyContent: 'flex-end',
+          border: 'none',
+          paddingBottom: '0',
+        }}
+      >
         <Button variant="primary" className="btn-sm">
           Move
         </Button>
@@ -27,7 +34,7 @@ export default function JobDetailsModal({
           Close
         </Button>
       </Modal.Header>
-      <Modal.Header>
+      <Modal.Header style={{ padding: '0 20px' }}>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <Modal.Title>{job.title}</Modal.Title>
           <Modal.Body>{job.company}</Modal.Body>
