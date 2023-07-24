@@ -23,7 +23,7 @@ export default function JobCard({ job, refreshPage }) {
 
   return (
     <>
-      <Card style={{ width: '90%' }}>
+      <Card style={{ width: '90%', backgroundColor: '#85BB65' }}>
         <Button
           variant="outline-danger"
           onClick={handleDelete}
