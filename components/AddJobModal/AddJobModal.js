@@ -1,36 +1,33 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { useAuth } from '../../utils/context/authContext';
 import { patchJob, postNewJob } from '../../utils/data/jobData';
 
 export default function AddJobModal({ categoryName, onUpdate }) {
+  const initialState = {
+    company: '',
+    jobTitle: '',
+    category: categoryName,
+  };
   const [show, setShow] = useState(false);
-  const [formInput, setFormInput] = useState({});
+  const [formInput, setFormInput] = useState(initialState);
 
   const { user } = useAuth();
 
   const categories = ['Wishlist', 'Applied', 'Offer', 'Interview', 'Rejected'];
 
-  useEffect(() => {
-    setFormInput({
-      company: '',
-      jobTitle: '',
-      category: categoryName,
-    });
-  }, [categoryName]);
+  // const getJobStatus = (status) => {
+  //   const statusMap = {
+  //     Wishlist: 1,
+  //     Applied: 2,
+  //     Offer: 3,
+  //     Interview: 4,
+  //     Rejected: 5,
+  //   };
 
-  const getJobStatus = (status) => {
-    const statusMap = {
-      Wishlist: 1,
-      Applied: 2,
-      Offer: 3,
-      Interview: 4,
-      Rejected: 5,
-    };
-
-    return statusMap[status];
-  };
+  //   return statusMap[status];
+  // };
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -51,7 +48,7 @@ export default function AddJobModal({ categoryName, onUpdate }) {
       title: formInput.jobTitle,
       dateCreated: new Date().toLocaleDateString(),
       description: '',
-      status: getJobStatus(formInput.category),
+      status: formInput.category,
       userId: user.uid,
     };
     postNewJob(payload).then(({ name }) => {
@@ -63,7 +60,14 @@ export default function AddJobModal({ categoryName, onUpdate }) {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button
+        variant="outline-primary"
+        style={{
+          height: '1.5rem', width: '100%', fontSize: '1rem', textAlign: 'center', padding: '0',
+        }}
+        className="mb-2"
+        onClick={handleShow}
+      >
         +
       </Button>
 
