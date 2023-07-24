@@ -17,17 +17,17 @@ export default function AddJobModal({ categoryName, onUpdate }) {
 
   const categories = ['Wishlist', 'Applied', 'Offer', 'Interview', 'Rejected'];
 
-  const getJobStatus = (status) => {
-    const statusMap = {
-      Wishlist: 1,
-      Applied: 2,
-      Offer: 3,
-      Interview: 4,
-      Rejected: 5,
-    };
+  // const getJobStatus = (status) => {
+  //   const statusMap = {
+  //     Wishlist: 1,
+  //     Applied: 2,
+  //     Offer: 3,
+  //     Interview: 4,
+  //     Rejected: 5,
+  //   };
 
-    return statusMap[status];
-  };
+  //   return statusMap[status];
+  // };
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -48,7 +48,7 @@ export default function AddJobModal({ categoryName, onUpdate }) {
       title: formInput.jobTitle,
       dateCreated: new Date().toLocaleDateString(),
       description: '',
-      status: getJobStatus(formInput.category),
+      status: formInput.category,
       userId: user.uid,
     };
     postNewJob(payload).then(({ name }) => {

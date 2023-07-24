@@ -86,7 +86,7 @@ JobDetailsForm.propTypes = {
     dateCreated: PropTypes.string,
     description: PropTypes.string,
     id: PropTypes.string,
-    status: PropTypes.number,
+    status: PropTypes.string,
     title: PropTypes.string,
     userId: PropTypes.string,
   }).isRequired,

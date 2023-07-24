@@ -31,11 +31,11 @@ const getAllFilteredJobs = () => new Promise((resolve, reject) => {
     .then((data) => {
       if (data) {
         const allJobs = Object.values(data);
-        const wishlist = allJobs.filter((job) => job.status === 1);
-        const applied = allJobs.filter((job) => job.status === 2);
-        const offer = allJobs.filter((job) => job.status === 3);
-        const interview = allJobs.filter((job) => job.status === 4);
-        const rejected = allJobs.filter((job) => job.status === 5);
+        const wishlist = allJobs.filter((job) => job.status === 'Wishlist');
+        const applied = allJobs.filter((job) => job.status === 'Applied');
+        const offer = allJobs.filter((job) => job.status === 'Offer');
+        const interview = allJobs.filter((job) => job.status === 'Interview');
+        const rejected = allJobs.filter((job) => job.status === 'Rejected');
         resolve({
           wishlist, applied, interview, offer, rejected,
         });
