@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import JobDetailsForm from '../JobDetailsForm/JobDetailsForm';
 import { getJobById } from '../../utils/data/jobData';
+import CategoryDropdown from '../CategoryDropdown/CategoryDropdown';
 
 export default function JobDetailsModal({
   show, handleClose, jobId,
@@ -27,9 +28,7 @@ export default function JobDetailsModal({
           paddingBottom: '0',
         }}
       >
-        <Button variant="primary" className="btn-sm">
-          Move
-        </Button>
+        <CategoryDropdown jobId={jobId} status={job?.status} />
         <Button variant="light" className="btn-sm" onClick={handleClose} style={{ border: '1px solid black', marginLeft: '1rem' }}>
           Close
         </Button>
