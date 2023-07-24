@@ -2,31 +2,25 @@
 import React, { useEffect, useState } from 'react';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { useRouter } from 'next/router';
-import { getAllFilteredJobs, getJobById, patchJob } from '../../utils/data/jobData';
+import { getJobById, patchJob } from '../../utils/data/jobData';
+import { useJobContext } from '../../utils/context/jobContext';
 
 export default function CategoryDropdown({ jobId }) {
   const [, setJob] = useState();
-  const [, setFilteredJobs] = useState([]);
   const [currentStatus, setCurrentStatus] = useState('');
 
-  const router = useRouter();
-
-  const getFilteredJobs = () => getAllFilteredJobs().then(setFilteredJobs);
+  const { getFilteredJobs } = useJobContext(); // Access the getFilteredJobs function from the JobContext
 
   useEffect(() => {
     getJobById(jobId).then((jobData) => {
       setJob(jobData);
       setCurrentStatus(jobData?.status || ''); // Set status to empty string if jobData or status is not available
     });
-    getFilteredJobs();
   }, [jobId]);
 
   const handleChange = (status) => {
     setCurrentStatus(status);
-    patchJob({ id: jobId, status }).then(() => {
-      getFilteredJobs().then(() => router.push('/'));
-    });
+    patchJob({ id: jobId, status }).then(() => getFilteredJobs());
   };
 
   const categories = ['Wishlist', 'Applied', 'Offer', 'Interview', 'Rejected'];

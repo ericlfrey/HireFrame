@@ -4,12 +4,18 @@ import PropTypes from 'prop-types';
 import { Button, Card } from 'react-bootstrap';
 import { deleteJob } from '../../utils/data/jobData';
 import JobDetailsModal from '../JobDetailsModal/JobDetailsModal';
+import { useJobContext } from '../../utils/context/jobContext';
 
 export default function JobCard({ job, refreshPage }) {
   const [show, setShow] = useState(false);
 
+  const { getFilteredJobs } = useJobContext();
+
   const handleShow = () => setShow(true);
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    getFilteredJobs();
+  };
 
   const handleDelete = () => {
     deleteJob(job.id).then(() => refreshPage());
