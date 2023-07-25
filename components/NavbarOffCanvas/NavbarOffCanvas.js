@@ -1,7 +1,9 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import {
   Button, Container, Form, Image, Nav, NavDropdown, Navbar, Offcanvas,
 } from 'react-bootstrap';
+import Link from 'next/link';
 import { useAuth } from '../../utils/context/authContext';
 
 export default function NavbarOffCanvas() {
@@ -16,27 +18,32 @@ export default function NavbarOffCanvas() {
             alt="Picture of the user"
             width="60"
             height="60"
-            // onClick={handleShow}
             roundedCircle
           />
         </Navbar.Toggle>
         <Navbar.Offcanvas
-          // id={`offcanvasNavbar-expand-${expand}`}
-          // aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
           placement="end"
         >
           <Offcanvas.Header closeButton style={{ backgroundColor: '#f5f5f5' }}>
             <Offcanvas.Title>
-              Offcanvas
+              {user.displayName}'s HireFrame
             </Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body style={{ backgroundColor: '#f5f5f5' }}>
+            <Form className="d-flex">
+              <Form.Control
+                type="search"
+                placeholder="Filter"
+                className="me-2"
+                aria-label="Search"
+              />
+              <Button variant="outline-success">Filter</Button>
+            </Form>
             <Nav className="justify-content-end flex-grow-1 pe-3">
-              <Nav.Link href="#action1">Home</Nav.Link>
-              <Nav.Link href="#action2">Link</Nav.Link>
+              <Link href="/" passHref>Home</Link>
+              <Link href="/contacts" passHref>Contacts</Link>
               <NavDropdown
                 title="Dropdown"
-              // id={`offcanvasNavbarDropdown-expand-${expand}`}
               >
                 <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action4">
@@ -48,15 +55,7 @@ export default function NavbarOffCanvas() {
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>
-            <Form className="d-flex">
-              <Form.Control
-                type="search"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
-              />
-              <Button variant="outline-success">Search</Button>
-            </Form>
+
           </Offcanvas.Body>
         </Navbar.Offcanvas>
       </Container>

@@ -18,9 +18,12 @@ export default function ListGroupHomePage() {
   return (
     <>
       <div className="main-page-container">
-        <ListGroup key="sm" horizontal="sm" className="my-2">
+        <ListGroup key="sm" horizontal="sm" className="my-2" style={{ width: '100vw' }}>
           {categories.map((cat) => (
-            <ListGroup.Item style={{ width: '19%', backgroundColor: '#E6EAF0', borderColor: '#636F7E' }} key={cat.name}>
+            <ListGroup.Item
+              style={{ width: '19%', backgroundColor: '#E6EAF0', borderColor: '#636F7E' }}
+              key={cat.name}
+            >
               <h6>{cat.name}</h6>
               <AddJobModal
                 categoryName={cat.name}

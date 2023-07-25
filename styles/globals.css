@@ -20,12 +20,17 @@ a {
 
 body {
   background-color: #2F3E4F;
+  /* background-color: rgb(230, 234, 240,0.7); */
 }
 
 .container {
-  margin: 1rem;
+  margin: 0;
+  padding: 0;
+  display: flex;
 }
 
 .main-page-container {
   width: 100vw;
+  margin-left: auto;
+  margin-right: auto;
 }
