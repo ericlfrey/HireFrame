@@ -17,18 +17,6 @@ export default function AddJobModal({ categoryName, onUpdate }) {
 
   const categories = ['Wishlist', 'Applied', 'Offer', 'Interview', 'Rejected'];
 
-  // const getJobStatus = (status) => {
-  //   const statusMap = {
-  //     Wishlist: 1,
-  //     Applied: 2,
-  //     Offer: 3,
-  //     Interview: 4,
-  //     Rejected: 5,
-  //   };
-
-  //   return statusMap[status];
-  // };
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -56,6 +44,7 @@ export default function AddJobModal({ categoryName, onUpdate }) {
       patchJob(patchPayload).then(() => onUpdate());
     });
     handleClose();
+    setFormInput(initialState);
   };
 
   return (
