@@ -1,21 +1,32 @@
 import React from 'react';
 import {
-  Button, Container, Form, Nav, NavDropdown, Navbar, Offcanvas,
+  Button, Container, Form, Image, Nav, NavDropdown, Navbar, Offcanvas,
 } from 'react-bootstrap';
+import { useAuth } from '../../utils/context/authContext';
 
 export default function NavbarOffCanvas() {
+  const { user } = useAuth();
   return (
     <Navbar key={false} expand={false} style={{ backgroundColor: '#6765bb' }}>
       <Container fluid>
         <Navbar.Brand href="#">HireFrame</Navbar.Brand>
-        <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${false}`} />
+        <Navbar.Toggle style={{ all: 'unset', cursor: 'pointer' }}>
+          <Image
+            src={user.photoURL}
+            alt="Picture of the user"
+            width="60"
+            height="60"
+            // onClick={handleShow}
+            roundedCircle
+          />
+        </Navbar.Toggle>
         <Navbar.Offcanvas
           // id={`offcanvasNavbar-expand-${expand}`}
           // aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
           placement="end"
         >
           <Offcanvas.Header closeButton style={{ backgroundColor: '#f5f5f5' }}>
-            <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${false}`}>
+            <Offcanvas.Title>
               Offcanvas
             </Offcanvas.Title>
           </Offcanvas.Header>
