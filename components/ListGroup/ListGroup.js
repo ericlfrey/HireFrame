@@ -18,10 +18,17 @@ export default function ListGroupHomePage() {
   return (
     <>
       <div className="main-page-container">
-        <ListGroup key="sm" horizontal="sm" className="my-2" style={{ width: '100vw' }}>
+        <ListGroup
+          key="sm"
+          horizontal="sm"
+          className="my-2 categories-list"
+          style={{ width: '100vw', display: 'flex', justifyContent: 'center' }}
+        >
           {categories.map((cat) => (
             <ListGroup.Item
-              style={{ width: '19%', backgroundColor: '#E6EAF0', borderColor: '#636F7E' }}
+              style={{
+                width: '19%', backgroundColor: '#f5f5f5', borderColor: '#636F7E',
+              }}
               key={cat.name}
             >
               <h6>{cat.name}</h6>

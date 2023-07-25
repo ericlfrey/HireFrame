@@ -11,9 +11,9 @@ import SearchBar from '../SearchBar/SearchBar';
 export default function NavbarOffCanvas() {
   const { user } = useAuth();
   return (
-    <Navbar key={false} expand={false} style={{ backgroundColor: '#6765bb' }}>
+    <Navbar key={false} expand={false} style={{ backgroundColor: '#3E3E3C' }}>
       <Container fluid>
-        <Navbar.Brand>
+        <Navbar.Brand style={{ color: '#E8E9C9' }}>
           <Link passHref href="/">
             HireFrame
           </Link>

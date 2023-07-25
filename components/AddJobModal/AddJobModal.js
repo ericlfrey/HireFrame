@@ -50,11 +50,11 @@ export default function AddJobModal({ categoryName, onUpdate }) {
   return (
     <>
       <Button
-        variant="outline-primary"
+        // variant="outline-primary"
         style={{
-          height: '1.5rem', width: '100%', fontSize: '1rem', textAlign: 'center', padding: '0',
+          height: '1.5rem', width: '100%', fontSize: '1rem', textAlign: 'center', padding: '0', border: 'none',
         }}
-        className="mb-2"
+        className="mb-2 add-job-btn"
         onClick={handleShow}
       >
         +

@@ -8,6 +8,7 @@ import { useJobContext } from '../../utils/context/jobContext';
 
 export default function JobCard({ job, refreshPage }) {
   const [show, setShow] = useState(false);
+  const [hover, setHover] = useState(false);
 
   const { getFilteredJobs } = useJobContext();
 
@@ -23,20 +24,41 @@ export default function JobCard({ job, refreshPage }) {
 
   return (
     <>
-      <Card style={{ width: '90%', backgroundColor: '#85BB65' }}>
-        <Button
+      <Card
+        onMouseOver={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+        style={{ width: '90%', backgroundColor: '#85BB65', marginBottom: '0.5rem' }}
+      >
+
+        {/* <Button
           variant="outline-dark"
           onClick={handleDelete}
           style={{
             height: '1rem', width: '1rem', fontSize: '.5rem', textAlign: 'center', padding: '0',
           }}
+
         >X
-        </Button>
+        </Button> */}
         <a href="#" onClick={handleShow}>
           <Card.Body>
-
-            <Card.Title style={{ fontSize: '0.7rem', fontWeight: 'bold' }}>{job.company}</Card.Title>
-            <Card.Text style={{ fontSize: '0.7rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <Card.Title
+                style={{ fontSize: '0.7rem', fontWeight: 'bold', color: '#1C1C1C' }}
+              >
+                {job.company}
+              </Card.Title>
+              {hover === true ? (
+                <Button
+                  variant="outline-dark"
+                  onClick={handleDelete}
+                  style={{
+                    height: '1rem', width: '1rem', fontSize: '.5rem', textAlign: 'center', padding: '0',
+                  }}
+                >X
+                </Button>
+              ) : ''}
+            </div>
+            <Card.Text style={{ fontSize: '0.7rem', color: '#E8E9C9' }}>
               {job.title}
             </Card.Text>
           </Card.Body>
