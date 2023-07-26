@@ -19,8 +19,10 @@ a {
 }
 
 body {
-  background-color: #2F3E4F;
-  /* background-color: rgb(230, 234, 240,0.7); */
+  background-color: #427AA1;
+  /* background-image: url('/images/card-cat.png');
+  background-size: cover; */
+  /* background-color: rgba(230, 234, 240,0.7); */
 }
 
 .container {
@@ -33,4 +35,27 @@ body {
   width: 100vw;
   margin-left: auto;
   margin-right: auto;
+}
+
+.btn-style,
+#dropdownBtn {
+  background-color: #427AA1;
+  border: none;
+}
+
+.btn-style:hover,
+.btn-style:focus-visible,
+.btn-style:active,
+#dropdownBtn:hover,
+#dropdownBtn:active,
+#dropdownBtn:focus-within {
+  background-color: #4d8dba !important;
+  border: none;
+  box-shadow: none;
+}
+
+.dropdown-menu {
+  background-color: #FDFDFD;
+  box-shadow: 1px 1px #CCC;
+  border: 1px solid #CCC;
 }

@@ -46,6 +46,7 @@ export default function JobDetailsForm({ job, refreshModal }) {
           autoComplete="off"
           required
           onKeyUp={handleEnter}
+          style={{ backgroundColor: '#EEF0F2', boxShadow: '1px 1px #CCC', border: '1px solid #CCC' }}
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
@@ -59,6 +60,7 @@ export default function JobDetailsForm({ job, refreshModal }) {
           autoComplete="off"
           required="required"
           onKeyUp={handleEnter}
+          style={{ backgroundColor: '#EEF0F2', boxShadow: '1px 1px #CCC', border: '1px solid #CCC' }}
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
@@ -74,6 +76,7 @@ export default function JobDetailsForm({ job, refreshModal }) {
             e.preventDefault();
             patchJob({ id: job.id, description: formInput.description }).then(() => refreshModal());
           }}
+          style={{ backgroundColor: '#EEF0F2', boxShadow: '1px 1px #CCC', border: '1px solid #CCC' }}
         />
       </Form.Group>
     </Form>

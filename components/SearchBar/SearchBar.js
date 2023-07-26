@@ -26,8 +26,15 @@ export default function SearchBar() {
           aria-label="Search"
           size="sm"
           onChange={handleChange}
+          style={{ backgroundColor: '#EEF0F2', boxShadow: '1px 1px #CCC', border: '1px solid #CCC' }}
         />
-        <Button type="submit" variant="outline-success" size="sm">Filter</Button>
+        <Button
+          type="submit"
+          size="sm"
+          className="btn-style"
+        >
+          Filter
+        </Button>
       </Form>
     </>
   );
