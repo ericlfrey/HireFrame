@@ -19,29 +19,36 @@ export default function JobDetailsModal({
   }, []);
 
   return (
-    <Modal show={show} onHide={handleClose} animation={false} size="xl">
+    <Modal show={show} onHide={handleClose} animation={false} size="lg">
       <Modal.Header
         style={{
           display: 'flex',
           justifyContent: 'flex-end',
           border: 'none',
           paddingBottom: '0',
+          backgroundColor: '#EEF0F2',
         }}
       >
         <CategoryDropdown jobId={jobId} status={job?.status} />
-        <Button variant="light" className="btn-sm" onClick={handleClose} style={{ border: '1px solid black', marginLeft: '1rem' }}>
+        <Button
+          variant="light"
+          className="btn-sm"
+          onClick={handleClose}
+          style={{ border: '1px solid black', marginLeft: '1rem' }}
+        >
           Close
         </Button>
       </Modal.Header>
-      <Modal.Header style={{ padding: '0 20px' }}>
+      <Modal.Header style={{ padding: '0 20px', backgroundColor: '#EEF0F2' }}>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <Modal.Title>{job.title}</Modal.Title>
           <Modal.Body>{job.company}</Modal.Body>
         </div>
       </Modal.Header>
-      <Modal.Body>
+      <Modal.Body style={{ backgroundColor: '#EEF0F2', paddingBottom: '0' }}>
         <JobDetailsForm job={job} refreshModal={getJob} />
       </Modal.Body>
+      <Modal.Footer style={{ backgroundColor: '#EEF0F2', border: 'none' }} />
     </Modal>
   );
 }

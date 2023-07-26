@@ -26,7 +26,7 @@ export default function CategoryDropdown({ jobId }) {
   const categories = ['Wishlist', 'Applied', 'Offer', 'Interview', 'Rejected'];
 
   return (
-    <DropdownButton drop="down-centered" title="Move" size="sm">
+    <DropdownButton drop="down-centered" title="Move" size="sm" id="dropdownBtn">
       {categories.map((category) => (
         <Dropdown.Item
           href="#/action-1"

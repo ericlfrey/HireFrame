@@ -37,15 +37,25 @@ body {
   margin-right: auto;
 }
 
-.btn-style {
+.btn-style,
+#dropdownBtn {
   background-color: #427AA1;
   border: none;
 }
 
 .btn-style:hover,
 .btn-style:focus-visible,
-.btn-style:active {
+.btn-style:active,
+#dropdownBtn:hover,
+#dropdownBtn:active,
+#dropdownBtn:focus-within {
   background-color: #4d8dba !important;
   border: none;
   box-shadow: none;
+}
+
+.dropdown-menu {
+  background-color: #FDFDFD;
+  box-shadow: 1px 1px #CCC;
+  border: 1px solid #CCC;
 }
