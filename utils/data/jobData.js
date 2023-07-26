@@ -20,8 +20,8 @@ const getAllJobs = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getAllFilteredJobs = () => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/jobs.json`, {
+const getAllFilteredJobs = (uid) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/jobs.json?orderBy="userId"&equalTo="${uid}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
