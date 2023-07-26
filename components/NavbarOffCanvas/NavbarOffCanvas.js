@@ -7,6 +7,7 @@ import {
 import Link from 'next/link';
 import { useAuth } from '../../utils/context/authContext';
 import SearchBar from '../SearchBar/SearchBar';
+import { signOut } from '../../utils/auth';
 
 export default function NavbarOffCanvas() {
   const { user } = useAuth();
@@ -40,8 +41,12 @@ export default function NavbarOffCanvas() {
             <Nav className="justify-content-end flex-grow-1 pe-3">
               <Link href="/" passHref>Home</Link>
               <Link href="/contacts" passHref>Contacts</Link>
+              <button type="button" onClick={signOut} style={{ all: 'unset' }}>
+                <Link href="/">
+                  Sign Out
+                </Link>
+              </button>
             </Nav>
-
           </Offcanvas.Body>
         </Navbar.Offcanvas>
       </Container>
