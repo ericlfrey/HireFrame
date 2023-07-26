@@ -42,7 +42,10 @@ body {
   border: none;
 }
 
-.btn-style:hover {
-  background-color: #4d8dba;
+.btn-style:hover,
+.btn-style:focus-visible,
+.btn-style:active {
+  background-color: #4d8dba !important;
   border: none;
+  box-shadow: none;
 }

@@ -18,7 +18,8 @@ export default function JobCard({ job, refreshPage }) {
     getFilteredJobs();
   };
 
-  const handleDelete = () => {
+  const handleDelete = (e) => {
+    e.stopPropagation();
     deleteJob(job.id).then(() => refreshPage());
   };
 

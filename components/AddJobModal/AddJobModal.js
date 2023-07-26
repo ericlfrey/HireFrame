@@ -30,21 +30,24 @@ export default function AddJobModal({ categoryName, onUpdate }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formInput.company === '' || formInput.jobTitle === '') window.alert('All Fields must be valid');
-    const payload = {
-      company: formInput.company,
-      title: formInput.jobTitle,
-      dateCreated: new Date().toLocaleDateString(),
-      description: '',
-      status: formInput.category,
-      userId: user.uid,
-    };
-    postNewJob(payload).then(({ name }) => {
-      const patchPayload = { id: name };
-      patchJob(patchPayload).then(() => onUpdate());
-    });
-    handleClose();
-    setFormInput(initialState);
+    if (formInput.company === '' || formInput.jobTitle === '') {
+      window.alert('All Fields must be valid');
+    } else {
+      const payload = {
+        company: formInput.company,
+        title: formInput.jobTitle,
+        dateCreated: new Date().toLocaleDateString(),
+        description: '',
+        status: formInput.category,
+        userId: user.uid,
+      };
+      postNewJob(payload).then(({ name }) => {
+        const patchPayload = { id: name };
+        patchJob(patchPayload).then(() => onUpdate());
+      });
+      handleClose();
+      setFormInput(initialState);
+    }
   };
 
   return (
@@ -61,7 +64,7 @@ export default function AddJobModal({ categoryName, onUpdate }) {
       </Button>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton style={{ backgroundColor: '#EEF0F2' }}>
+        <Modal.Header closeButton style={{ backgroundColor: '#EEF0F2', border: 'none' }}>
           <Modal.Title>Add Job</Modal.Title>
         </Modal.Header>
         <Modal.Body style={{ backgroundColor: '#EEF0F2' }}>
@@ -76,7 +79,7 @@ export default function AddJobModal({ categoryName, onUpdate }) {
                 onChange={handleChange}
                 autoComplete="off"
                 required="required"
-                style={{ backgroundColor: '#EEF0F2', boxShadow: '1px 1px #CCC' }}
+                style={{ backgroundColor: '#EEF0F2', boxShadow: '1px 1px #CCC', border: '1px solid #CCC' }}
               />
             </Form.Group>
 
@@ -90,6 +93,7 @@ export default function AddJobModal({ categoryName, onUpdate }) {
                 onChange={handleChange}
                 autoComplete="off"
                 required
+                style={{ backgroundColor: '#EEF0F2', boxShadow: '1px 1px #CCC', border: '1px solid #CCC' }}
               />
             </Form.Group>
             <Form.Group className="mb-3">
@@ -98,6 +102,7 @@ export default function AddJobModal({ categoryName, onUpdate }) {
                 onChange={handleChange}
                 name="category"
                 value={formInput.category}
+                style={{ backgroundColor: '#EEF0F2', boxShadow: '1px 1px #CCC', border: '1px solid #CCC' }}
               >
                 {categories.map((cat) => (
                   <option key={cat}>{cat}</option>
@@ -107,11 +112,13 @@ export default function AddJobModal({ categoryName, onUpdate }) {
             {/* <Button type="button" variant="secondary" onClick={handleClose}>
               Discard
             </Button> */}
-            <Button type="submit" variant="primary" onClick={handleSubmit} className="btn-style">
-              Save Job
-            </Button>
           </Form>
         </Modal.Body>
+        <Modal.Footer style={{ backgroundColor: '#EEF0F2', border: 'none' }}>
+          <Button type="submit" variant="primary" onClick={handleSubmit} className="btn-style">
+            Save Job
+          </Button>
+        </Modal.Footer>
       </Modal>
     </>
   );
