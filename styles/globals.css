@@ -37,10 +37,12 @@ body {
   margin-right: auto;
 }
 
-.add-job-btn {
+.btn-style {
   background-color: #427AA1;
+  border: none;
 }
 
-.add-job-btn:hover {
+.btn-style:hover {
   background-color: #4d8dba;
+  border: none;
 }

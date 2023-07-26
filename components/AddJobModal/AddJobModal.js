@@ -54,17 +54,17 @@ export default function AddJobModal({ categoryName, onUpdate }) {
         style={{
           height: '1.5rem', width: '100%', fontSize: '1rem', textAlign: 'center', padding: '0', border: 'none',
         }}
-        className="mb-2 add-job-btn"
+        className="mb-2 btn-style"
         onClick={handleShow}
       >
         +
       </Button>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
+        <Modal.Header closeButton style={{ backgroundColor: '#EEF0F2' }}>
           <Modal.Title>Add Job</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body style={{ backgroundColor: '#EEF0F2' }}>
           <Form>
             <Form.Group className="mb-3">
               <Form.Label>Company</Form.Label>
@@ -76,6 +76,7 @@ export default function AddJobModal({ categoryName, onUpdate }) {
                 onChange={handleChange}
                 autoComplete="off"
                 required="required"
+                style={{ backgroundColor: '#EEF0F2', boxShadow: '1px 1px #CCC' }}
               />
             </Form.Group>
 
@@ -106,7 +107,7 @@ export default function AddJobModal({ categoryName, onUpdate }) {
             {/* <Button type="button" variant="secondary" onClick={handleClose}>
               Discard
             </Button> */}
-            <Button type="submit" variant="primary" onClick={handleSubmit}>
+            <Button type="submit" variant="primary" onClick={handleSubmit} className="btn-style">
               Save Job
             </Button>
           </Form>
