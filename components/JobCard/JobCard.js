@@ -12,6 +12,13 @@ export default function JobCard({ job, refreshPage }) {
 
   const { getFilteredJobs } = useJobContext();
 
+  const getDays = () => {
+    const now = Date.now();
+    const jobDate = new Date(job.dateCreated);
+    const days = Math.ceil((now - jobDate) / 86400000);
+    return days;
+  };
+
   const handleShow = () => setShow(true);
   const handleClose = () => {
     setShow(false);
@@ -34,16 +41,6 @@ export default function JobCard({ job, refreshPage }) {
         onMouseLeave={() => setHover(false)}
         style={{ width: '90%', backgroundColor: '#85BB65', marginBottom: '0.5rem' }}
       >
-
-        {/* <Button
-          variant="outline-dark"
-          onClick={handleDelete}
-          style={{
-            height: '1rem', width: '1rem', fontSize: '.5rem', textAlign: 'center', padding: '0',
-          }}
-
-        >X
-        </Button> */}
         <a href="#" onClick={handleShow}>
           <Card.Body>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -66,6 +63,7 @@ export default function JobCard({ job, refreshPage }) {
             <Card.Text style={{ fontSize: '0.7rem', color: '#E8E9C9' }}>
               {job.title}
             </Card.Text>
+            <Card.Text>{getDays()}</Card.Text>
           </Card.Body>
         </a>
       </Card>
