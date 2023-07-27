@@ -10,8 +10,8 @@ export default function ListGroupHomePage() {
   const categories = [
     { name: 'Wishlist', array: filteredJobs?.wishlist },
     { name: 'Applied', array: filteredJobs?.applied },
-    { name: 'Offer', array: filteredJobs?.offer },
     { name: 'Interview', array: filteredJobs?.interview },
+    { name: 'Offer', array: filteredJobs?.offer },
     { name: 'Rejected', array: filteredJobs?.rejected },
   ];
 

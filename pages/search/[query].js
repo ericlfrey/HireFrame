@@ -24,8 +24,8 @@ export default function SearchQueryPage() {
   const categories = [
     { name: 'Wishlist', array: searchedJobs?.wishlist },
     { name: 'Applied', array: searchedJobs?.applied },
-    { name: 'Offer', array: searchedJobs?.offer },
     { name: 'Interview', array: searchedJobs?.interview },
+    { name: 'Offer', array: searchedJobs?.offer },
     { name: 'Rejected', array: searchedJobs?.rejected },
   ];
 
