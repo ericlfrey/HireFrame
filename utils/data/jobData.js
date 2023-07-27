@@ -62,7 +62,6 @@ const searchJobs = (uid, query) => new Promise((resolve, reject) => {
           || job.description.toLowerCase().includes(query)
           || job.company.toLowerCase().includes(query)
         ));
-        console.log(filteredJobs);
         const wishlist = filteredJobs.filter((job) => job.status === 'Wishlist');
         const applied = filteredJobs.filter((job) => job.status === 'Applied');
         const offer = filteredJobs.filter((job) => job.status === 'Offer');

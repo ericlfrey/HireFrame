@@ -28,7 +28,6 @@ export default function SearchQueryPage() {
     { name: 'Interview', array: searchedJobs?.interview },
     { name: 'Rejected', array: searchedJobs?.rejected },
   ];
-  console.log(categories);
 
   return (
     <JobProvider>

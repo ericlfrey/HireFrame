@@ -16,7 +16,6 @@ export default function JobCard({ job, refreshPage }) {
   const handleClose = () => {
     setShow(false);
     if (refreshPage) {
-      console.log(refreshPage);
       refreshPage();
     } else {
       getFilteredJobs();
