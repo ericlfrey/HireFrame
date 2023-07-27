@@ -46,7 +46,10 @@ export default function SearchQueryPage() {
                 }}
                 key={cat.name}
               >
-                <h6>{cat.name}</h6>
+                <div style={{ display: 'flex', justifyContent: 'space-between', color: '#3E3E3C' }}>
+                  <h6>{cat.name}</h6>
+                  <h6>{cat.array?.length} {cat.array?.length === 1 ? 'Job' : 'Jobs'}</h6>
+                </div>
                 <AddJobModal
                   categoryName={cat.name}
                   onUpdate={getSearchedJobs}
