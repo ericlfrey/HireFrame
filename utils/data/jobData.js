@@ -46,6 +46,38 @@ const getAllFilteredJobs = (uid) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const searchJobs = (uid, query) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/jobs.json?orderBy="userId"&equalTo="${uid}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data) {
+        const allJobs = Object.values(data);
+        const filteredJobs = allJobs.filter((job) => (
+          job.title.toLowerCase().includes(query)
+          || job.description.toLowerCase().includes(query)
+          || job.company.toLowerCase().includes(query)
+        ));
+        console.log(filteredJobs);
+        const wishlist = filteredJobs.filter((job) => job.status === 'Wishlist');
+        const applied = filteredJobs.filter((job) => job.status === 'Applied');
+        const offer = filteredJobs.filter((job) => job.status === 'Offer');
+        const interview = filteredJobs.filter((job) => job.status === 'Interview');
+        const rejected = filteredJobs.filter((job) => job.status === 'Rejected');
+        resolve({
+          wishlist, applied, interview, offer, rejected,
+        });
+      } else {
+        resolve([]);
+      }
+    })
+    .catch(reject);
+});
+
 const getJobById = (jobId) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/jobs/${jobId}.json`, {
     method: 'GET',
@@ -96,18 +128,6 @@ const deleteJob = (jobId) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// const getOrderDetails = (firebaseKey) => new Promise((resolve, reject) => {
-//   fetch(`${endpoint}/items.json?orderBy="orderID"&equalTo="${firebaseKey}"`, {
-//     method: 'GET',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//   })
-//     .then((response) => response.json())
-//     .then((data) => resolve(Object.values(data)))
-//     .catch(reject);
-// });
-
 export {
   getAllJobs,
   getAllFilteredJobs,
@@ -115,4 +135,5 @@ export {
   patchJob,
   getJobById,
   deleteJob,
+  searchJobs,
 };

@@ -40,7 +40,7 @@ export default function ListGroupHomePage() {
                 <JobCard
                   key={job.id}
                   job={job}
-                  refreshPage={getFilteredJobs}
+                // refreshPage={getFilteredJobs}
                 />
               ))}
             </ListGroup.Item>

@@ -15,12 +15,17 @@ export default function JobCard({ job, refreshPage }) {
   const handleShow = () => setShow(true);
   const handleClose = () => {
     setShow(false);
-    getFilteredJobs();
+    if (refreshPage) {
+      console.log(refreshPage);
+      refreshPage();
+    } else {
+      getFilteredJobs();
+    }
   };
 
   const handleDelete = (e) => {
     e.stopPropagation();
-    deleteJob(job.id).then(() => refreshPage());
+    deleteJob(job.id).then(() => getFilteredJobs());
   };
 
   return (
@@ -84,5 +89,9 @@ JobCard.propTypes = {
     title: PropTypes.string,
     userId: PropTypes.string,
   }).isRequired,
-  refreshPage: PropTypes.func.isRequired,
+  refreshPage: PropTypes.func,
+};
+
+JobCard.defaultProps = {
+  refreshPage: null,
 };
