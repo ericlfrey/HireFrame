@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
+// import PropTypes from 'prop-types';
 
 export default function SearchBar() {
   const [searchInput, setSearchInput] = useState('');
@@ -32,6 +33,7 @@ export default function SearchBar() {
           type="submit"
           size="sm"
           className="btn-style"
+        // onClick={handleClose}
         >
           Filter
         </Button>
@@ -39,3 +41,7 @@ export default function SearchBar() {
     </>
   );
 }
+
+// SearchBar.propTypes = {
+//   handleClose: PropTypes.func.isRequired,
+// };
