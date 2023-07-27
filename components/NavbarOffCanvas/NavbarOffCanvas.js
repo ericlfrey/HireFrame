@@ -1,6 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Container, Image, Nav, Navbar, Offcanvas,
 } from 'react-bootstrap';
@@ -10,6 +9,9 @@ import SearchBar from '../SearchBar/SearchBar';
 import { signOut } from '../../utils/auth';
 
 export default function NavbarOffCanvas() {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const { user } = useAuth();
   return (
     <Navbar key={false} expand={false} style={{ backgroundColor: '#3E3E3C' }}>
@@ -19,7 +21,7 @@ export default function NavbarOffCanvas() {
             HireFrame
           </Link>
         </Navbar.Brand>
-        <Navbar.Toggle style={{ all: 'unset', cursor: 'pointer' }}>
+        <button type="button" style={{ all: 'unset', cursor: 'pointer', margin: '0 0 0 0' }} onClick={handleShow}>
           <Image
             src={user.photoURL}
             alt="Picture of the user"
@@ -27,9 +29,11 @@ export default function NavbarOffCanvas() {
             height="60"
             roundedCircle
           />
-        </Navbar.Toggle>
-        <Navbar.Offcanvas
+        </button>
+        <Offcanvas
           placement="end"
+          show={show}
+          onHide={handleClose}
         >
           <Offcanvas.Header closeButton style={{ backgroundColor: '#f5f5f5' }}>
             <Offcanvas.Title>
@@ -39,8 +43,12 @@ export default function NavbarOffCanvas() {
           <Offcanvas.Body style={{ backgroundColor: '#f5f5f5' }}>
             <SearchBar />
             <Nav className="justify-content-end flex-grow-1 pe-3">
-              <Link href="/" passHref>Home</Link>
-              <Link href="/contacts" passHref>Contacts</Link>
+              <button type="button" style={{ all: 'unset' }} onClick={handleClose}>
+                <Link href="/" passHref>Home</Link>
+              </button>
+              <button type="button" style={{ all: 'unset' }} onClick={handleClose}>
+                <Link href="/contacts" passHref>Contacts</Link>
+              </button>
               <button type="button" onClick={signOut} style={{ all: 'unset' }}>
                 <Link href="/">
                   Sign Out
@@ -48,7 +56,7 @@ export default function NavbarOffCanvas() {
               </button>
             </Nav>
           </Offcanvas.Body>
-        </Navbar.Offcanvas>
+        </Offcanvas>
       </Container>
     </Navbar>
   );
