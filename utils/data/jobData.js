@@ -30,8 +30,8 @@ const getAllFilteredJobs = (uid) => new Promise((resolve, reject) => {
     .then((response) => response.json())
     .then((data) => {
       if (data) {
-        const allJobs = Object.values(data);
-        const wishlist = allJobs.filter((job) => job.status === 'Wishlist');
+        const allJobs = Object.values(data).sort((a, b) => new Date(b.dateCreated) - new Date(a.dateCreated));
+        const wishlist = allJobs.filter((job) => job.status === 'Wishlist').sort((a, b) => a.dateCreated - b.dateCreated);
         const applied = allJobs.filter((job) => job.status === 'Applied');
         const offer = allJobs.filter((job) => job.status === 'Offer');
         const interview = allJobs.filter((job) => job.status === 'Interview');
@@ -56,7 +56,7 @@ const searchJobs = (uid, query) => new Promise((resolve, reject) => {
     .then((response) => response.json())
     .then((data) => {
       if (data) {
-        const allJobs = Object.values(data);
+        const allJobs = Object.values(data).sort((a, b) => new Date(b.dateCreated) - new Date(a.dateCreated));
         const filteredJobs = allJobs.filter((job) => (
           job.title.toLowerCase().includes(query)
           || job.description.toLowerCase().includes(query)

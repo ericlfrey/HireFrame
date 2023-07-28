@@ -12,7 +12,7 @@ export default function JobCard({ job, refreshPage }) {
 
   const { getFilteredJobs } = useJobContext();
 
-  const getDays = () => {
+  const timeElapsed = () => {
     const now = Date.now();
     const jobDate = new Date(job.dateCreated);
     const days = Math.ceil((now - jobDate) / 86400000);
@@ -64,7 +64,7 @@ export default function JobCard({ job, refreshPage }) {
             <Card.Text style={{ fontSize: '0.7rem', color: '#EEF0F2', margin: '0' }}>
               {job.title}
             </Card.Text>
-            <Card.Text style={{ textAlign: 'right', fontSize: '0.7rem', color: '#3E3E3C' }}>{getDays()}</Card.Text>
+            <Card.Text style={{ textAlign: 'right', fontSize: '0.7rem', color: '#3E3E3C' }}>{timeElapsed()}</Card.Text>
           </Card.Body>
         </a>
       </Card>
