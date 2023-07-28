@@ -6,11 +6,13 @@ import { useEffect, useState } from 'react';
 import JobDetailsForm from '../JobDetailsForm/JobDetailsForm';
 import { getJobById } from '../../utils/data/jobData';
 import CategoryDropdown from '../CategoryDropdown/CategoryDropdown';
+import JobDateForm from '../JobDateForm/JobDateForm';
 
 export default function JobDetailsModal({
   show, handleClose, jobId,
 }) {
   const [job, setJob] = useState({});
+  const [showCal, setShowCal] = useState(false);
 
   const getJob = () => getJobById(jobId).then(setJob);
 
@@ -48,11 +50,16 @@ export default function JobDetailsModal({
       <Modal.Body style={{ backgroundColor: '#EEF0F2', paddingBottom: '0' }}>
         <JobDetailsForm job={job} refreshModal={getJob} />
       </Modal.Body>
-      <Modal.Footer style={{
-        backgroundColor: '#EEF0F2', border: 'none', fontSize: '0.7rem', color: '#3E3E3C',
-      }}
+      <Modal.Footer
+        style={{
+          backgroundColor: '#EEF0F2', border: 'none', fontSize: '0.7rem', color: '#3E3E3C',
+        }}
+        onClick={() => setShowCal(!showCal)}
       >
-        {job.dateCreated}
+        {showCal
+          ? <JobDateForm jobId={jobId} />
+          : <span style={{ cursor: 'pointer' }}>{job.dateCreated}</span>}
+
       </Modal.Footer>
     </Modal>
   );
