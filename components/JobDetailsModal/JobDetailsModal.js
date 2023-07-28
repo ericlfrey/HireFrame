@@ -19,7 +19,7 @@ export default function JobDetailsModal({
   }, []);
 
   return (
-    <Modal show={show} onHide={handleClose} animation={false} size="lg">
+    <Modal show={show} onHide={handleClose} animation={false} size="lg" style={{ color: '#3E3E3C' }}>
       <Modal.Header
         style={{
           display: 'flex',
@@ -48,7 +48,12 @@ export default function JobDetailsModal({
       <Modal.Body style={{ backgroundColor: '#EEF0F2', paddingBottom: '0' }}>
         <JobDetailsForm job={job} refreshModal={getJob} />
       </Modal.Body>
-      <Modal.Footer style={{ backgroundColor: '#EEF0F2', border: 'none' }} />
+      <Modal.Footer style={{
+        backgroundColor: '#EEF0F2', border: 'none', fontSize: '0.7rem', color: '#3E3E3C',
+      }}
+      >
+        {job.dateCreated}
+      </Modal.Footer>
     </Modal>
   );
 }
