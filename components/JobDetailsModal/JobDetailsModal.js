@@ -32,9 +32,9 @@ export default function JobDetailsModal({
         <CategoryDropdown jobId={jobId} status={job?.status} />
         <Button
           variant="light"
-          className="btn-sm"
+          className="btn-sm btn-style"
           onClick={handleClose}
-          style={{ border: '1px solid black', marginLeft: '1rem' }}
+          style={{ marginLeft: '1rem' }}
         >
           Close
         </Button>
