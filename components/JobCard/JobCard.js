@@ -16,7 +16,8 @@ export default function JobCard({ job, refreshPage }) {
     const now = Date.now();
     const jobDate = new Date(job.dateCreated);
     const days = Math.ceil((now - jobDate) / 86400000);
-    return days;
+    const weeks = Math.floor(days / 7);
+    return days < 7 ? `${days}d` : `${weeks}w`;
   };
 
   const handleShow = () => setShow(true);
