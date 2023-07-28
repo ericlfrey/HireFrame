@@ -43,10 +43,10 @@ export default function JobCard({ job, refreshPage }) {
         style={{ width: '90%', backgroundColor: '#85BB65', marginBottom: '0.5rem' }}
       >
         <a href="#" onClick={handleShow}>
-          <Card.Body>
+          <Card.Body style={{ padding: '10px 20px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <Card.Title
-                style={{ fontSize: '0.7rem', fontWeight: 'bold', color: '#1C1C1C' }}
+                style={{ fontSize: '0.7rem', fontWeight: 'bold', color: '#3E3E3C' }}
               >
                 {job.company}
               </Card.Title>
@@ -61,10 +61,10 @@ export default function JobCard({ job, refreshPage }) {
                 </Button>
               ) : ''}
             </div>
-            <Card.Text style={{ fontSize: '0.7rem', color: '#E8E9C9' }}>
+            <Card.Text style={{ fontSize: '0.7rem', color: '#EEF0F2', margin: '0' }}>
               {job.title}
             </Card.Text>
-            <Card.Text>{getDays()}</Card.Text>
+            <Card.Text style={{ textAlign: 'right', fontSize: '0.7rem', color: '#3E3E3C' }}>{getDays()}</Card.Text>
           </Card.Body>
         </a>
       </Card>

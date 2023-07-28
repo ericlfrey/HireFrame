@@ -10,7 +10,7 @@ export default function NavBar() {
   return (
     <Navbar key={false} expand={false} style={{ backgroundColor: '#3E3E3C' }}>
       <Container fluid>
-        <Navbar.Brand style={{ color: '#E8E9C9' }}>
+        <Navbar.Brand style={{ color: '#EEF0F2' }}>
           <Link passHref href="/">
             HireFrame
           </Link>
