@@ -55,9 +55,10 @@ export default function JobCard({ job, refreshPage }) {
                 <Button
                   onClick={handleDelete}
                   style={{
-                    all: 'unset', height: '1rem', width: '1rem', fontSize: '.5rem', textAlign: 'center', padding: '0',
+                    height: '1.3rem', width: '1.3rem', fontSize: '.7rem', textAlign: 'center', padding: '0', backgroundColor: 'transparent', border: 'solid 1px rgba(62, 62, 60, 0.4)',
                   }}
-                ><Trash />
+                >
+                  <Trash style={{ color: '#EEF0F2' }} />
                 </Button>
               ) : ''}
             </div>
