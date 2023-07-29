@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Card } from 'react-bootstrap';
+import { Trash } from 'react-bootstrap-icons';
 import { deleteJob } from '../../utils/data/jobData';
 import JobDetailsModal from '../JobDetailsModal/JobDetailsModal';
 import { useJobContext } from '../../utils/context/jobContext';
@@ -52,12 +53,11 @@ export default function JobCard({ job, refreshPage }) {
               </Card.Title>
               {hover === true ? (
                 <Button
-                  variant="outline-dark"
                   onClick={handleDelete}
                   style={{
-                    height: '1rem', width: '1rem', fontSize: '.5rem', textAlign: 'center', padding: '0',
+                    all: 'unset', height: '1rem', width: '1rem', fontSize: '.5rem', textAlign: 'center', padding: '0',
                   }}
-                >X
+                ><Trash />
                 </Button>
               ) : ''}
             </div>
