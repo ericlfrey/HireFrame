@@ -22,12 +22,14 @@ export default function ListGroupHomePage() {
           key="sm"
           horizontal="sm"
           className="my-2 categories-list"
-          style={{ width: '100vw', display: 'flex', justifyContent: 'center' }}
+          style={{
+            height: '90vh', width: '100vw', display: 'flex', justifyContent: 'center',
+          }}
         >
           {categories.map((cat) => (
             <ListGroup.Item
               style={{
-                width: '19%', backgroundColor: '#f5f5f5', borderColor: '#636F7E',
+                width: '19%', backgroundColor: '#f5f5f5', borderColor: '#636F7E', overflowX: 'hidden', overflowY: 'auto',
               }}
               key={cat.name}
             >
