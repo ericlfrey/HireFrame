@@ -41,6 +41,7 @@ body {
 #dropdownBtn {
   background-color: #427AA1;
   border: none;
+  color: #FDFDFD;
 }
 
 .btn-style:hover,

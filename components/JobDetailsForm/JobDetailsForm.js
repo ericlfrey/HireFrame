@@ -21,16 +21,13 @@ export default function JobDetailsForm({ job, refreshModal }) {
 
   const handleEnter = (e) => {
     e.preventDefault();
-    if (e.code === 'Enter') {
-      const patchPayload = {
-        id: job.id,
-        title: formInput.jobTitle,
-        company: formInput.company,
-        description: formInput.description,
-      };
-      patchJob(patchPayload).then(() => refreshModal());
-      e.target.blur();
-    }
+    const patchPayload = {
+      id: job.id,
+      title: formInput.jobTitle,
+      company: formInput.company,
+      description: formInput.description,
+    };
+    patchJob(patchPayload).then(() => refreshModal());
   };
 
   return (
