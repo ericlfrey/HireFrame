@@ -1,8 +1,9 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Card } from 'react-bootstrap';
-import { Trash } from 'react-bootstrap-icons';
+import { Trash3Fill } from 'react-bootstrap-icons';
 import { deleteJob } from '../../utils/data/jobData';
 import JobDetailsModal from '../JobDetailsModal/JobDetailsModal';
 import { useJobContext } from '../../utils/context/jobContext';
@@ -18,7 +19,13 @@ export default function JobCard({ job, refreshPage }) {
     const jobDate = new Date(job.dateCreated);
     const days = Math.ceil((now - jobDate) / 86400000);
     const weeks = Math.floor(days / 7);
-    return days < 7 ? `${days}d` : `${weeks}w`;
+    const months = Math.floor(weeks / 4);
+    if (days < 7) {
+      return `${days}d`;
+    } if (weeks < 4) {
+      return `${weeks}w`;
+    }
+    return `${months}mo`;
   };
 
   const handleShow = () => setShow(true);
@@ -55,10 +62,10 @@ export default function JobCard({ job, refreshPage }) {
                 <Button
                   onClick={handleDelete}
                   style={{
-                    height: '1.3rem', width: '1.3rem', fontSize: '.7rem', textAlign: 'center', padding: '0', backgroundColor: 'transparent', border: 'solid 1px rgba(62, 62, 60, 0.4)',
+                    height: '1.3rem', width: '1.3rem', fontSize: '.7rem', textAlign: 'center', padding: '0', backgroundColor: 'rgba(62, 62, 60, 0.1)', border: 'solid 1px rgba(62, 62, 60, 0.4)',
                   }}
                 >
-                  <Trash style={{ color: '#EEF0F2' }} />
+                  <Trash3Fill style={{ color: '#EEF0F2' }} />
                 </Button>
               ) : ''}
             </div>
