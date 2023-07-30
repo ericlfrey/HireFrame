@@ -23,7 +23,7 @@ export default function CategoryDropdown({ jobId }) {
     patchJob({ id: jobId, status }).then(() => getFilteredJobs());
   };
 
-  const categories = ['Wishlist', 'Applied', 'Offer', 'Interview', 'Rejected'];
+  const categories = ['Wishlist', 'Applied', 'Interview', 'Offer', 'Rejected'];
 
   return (
     <DropdownButton drop="end" title="Move" size="sm" id="dropdownBtn">

@@ -31,7 +31,6 @@ export default function JobDetailsModal({
       >
         <CategoryDropdown jobId={jobId} status={job?.status} />
         <Button
-          variant="light"
           className="btn-sm btn-style"
           onClick={handleClose}
           style={{ marginLeft: '1rem' }}
@@ -53,7 +52,7 @@ export default function JobDetailsModal({
           backgroundColor: '#EEF0F2', border: 'none', fontSize: '0.7rem', color: '#3E3E3C',
         }}
       >
-        <span style={{ cursor: 'pointer' }}>{job.dateCreated}</span>
+        <span>created on - {job.dateCreated}</span>
       </Modal.Footer>
     </Modal>
   );
