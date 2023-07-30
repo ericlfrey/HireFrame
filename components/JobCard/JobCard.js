@@ -40,7 +40,9 @@ export default function JobCard({ job, refreshPage }) {
 
   const handleDelete = (e) => {
     e.stopPropagation();
-    deleteJob(job.id).then(() => getFilteredJobs());
+    if (window.confirm(
+      `Are you sure you want to delete ${job.title} at ${job.company}?`,
+    )) deleteJob(job.id).then(() => getFilteredJobs());
   };
 
   return (
