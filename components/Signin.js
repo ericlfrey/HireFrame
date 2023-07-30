@@ -1,5 +1,7 @@
 import React from 'react';
+import Image from 'next/image';
 import { signIn } from '../utils/auth';
+import logo from '../public/images/logo.png';
 
 function Signin() {
   return (
@@ -17,6 +19,7 @@ function Signin() {
       <button type="button" className="btn btn-primary btn-lg copy-btn" onClick={signIn}>
         Sign In
       </button>
+      <Image src={logo} />
     </div>
   );
 }
