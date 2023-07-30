@@ -4,7 +4,9 @@ import {
   Container, Navbar,
 } from 'react-bootstrap';
 import Link from 'next/link';
+import Image from 'next/image';
 import MenuDrawer from '../MenuDrawer/MenuDrawer';
+import logo from '../../public/images/logo.png';
 
 export default function NavBar() {
   return (
@@ -17,7 +19,10 @@ export default function NavBar() {
       <Container fluid>
         <Navbar.Brand style={{ color: '#EEF0F2' }}>
           <Link passHref href="/">
-            HireFrame
+            <div style={{ cursor: 'pointer', display: 'flex', alignContent: 'center' }}>
+              <Image src={logo} height={60} width={60} />
+              <span style={{ display: 'flex', alignItems: 'flex-end', marginLeft: '1rem' }}>HireFrame</span>
+            </div>
           </Link>
         </Navbar.Brand>
         <MenuDrawer />
