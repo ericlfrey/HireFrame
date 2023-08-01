@@ -1,11 +1,17 @@
+import Head from 'next/head';
 import { JobProvider } from '../utils/context/jobContext';
 import ListGroupHomePage from '../components/ListGroup/ListGroup';
 
 function Home() {
   return (
-    <JobProvider>
-      <ListGroupHomePage />
-    </JobProvider>
+    <>
+      <Head>
+        <title>HireFrame</title>
+      </Head>
+      <JobProvider>
+        <ListGroupHomePage />
+      </JobProvider>
+    </>
   );
 }
 
