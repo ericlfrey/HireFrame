@@ -56,7 +56,9 @@ export default function JobCard({ job, refreshPage }) {
           <Card.Body style={{ padding: '10px 20px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <Card.Title
-                style={{ fontSize: '0.7rem', fontWeight: 'bold', color: '#3E3E3C' }}
+                style={{
+                  fontSize: '0.7rem', fontWeight: 'bold', color: '#3E3E3C', width: '75%',
+                }}
               >
                 {job.company}
               </Card.Title>
