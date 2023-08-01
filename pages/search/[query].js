@@ -2,6 +2,7 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { ListGroup } from 'react-bootstrap';
+import Head from 'next/head';
 import { searchJobs } from '../../utils/data/jobData';
 import { useAuth } from '../../utils/context/authContext';
 import AddJobModal from '../../components/AddJobModal/AddJobModal';
@@ -32,6 +33,9 @@ export default function SearchQueryPage() {
   return (
     <JobProvider>
       <>
+        <Head>
+          <title>HireFrame</title>
+        </Head>
         <div className="main-page-container">
           <ListGroup
             key="sm"
