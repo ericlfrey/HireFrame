@@ -35,13 +35,13 @@ export default function MenuDrawer() {
         <Offcanvas.Body style={{ backgroundColor: '#f5f5f5' }}>
           <SearchBar />
           <Nav className="justify-content-end flex-grow-1 pe-3">
-            <button type="button" style={{ all: 'unset' }} onClick={handleClose}>
+            <button type="button" style={{ all: 'unset', marginTop: '1rem' }} onClick={handleClose}>
               <Link href="/" passHref>Home</Link>
             </button>
-            <button type="button" style={{ all: 'unset' }} onClick={handleClose}>
+            {/* <button type="button" style={{ all: 'unset' }} onClick={handleClose}>
               <Link href="/contacts" passHref>Contacts</Link>
-            </button>
-            <button type="button" onClick={signOut} style={{ all: 'unset' }}>
+            </button> */}
+            <button type="button" onClick={signOut} style={{ all: 'unset', marginTop: '1rem' }}>
               <Link href="/">
                 Sign Out
               </Link>
