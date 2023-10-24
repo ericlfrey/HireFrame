@@ -1,10 +1,26 @@
-const { NextRequest, NextResponse } = require('next/server');
+import { NextRequest, NextResponse } from 'next/server';
 
-export default function Middleware(request) {
-  const isHttps = request.headers.get('x-forwarded-proto')?.split(',')[0] === 'https';
+// type Environment = "production" | "development" | "other";
 
-  if (!isHttps) {
-    const newUrl = new URL(`https://${request.headers.get('host')}${request.url}`);
-    return NextResponse.redirect(newUrl.href, 301);
+function middleware(request) {
+  const currentEnv = process.env.NODE_ENV;
+  const isLocalhost = request.headers.get('host')?.includes('localhost');
+  const isProtocolHTTP = request.headers.get('x-forwarded-proto') === 'http';
+
+  if (currentEnv === 'production' && !isLocalhost && isProtocolHTTP) {
+    return NextResponse.redirect(
+      `https://${request.headers.get('host')}${request.nextUrl.pathname}${request?.nextUrl?.search || ''
+      }`,
+      301,
+    );
   }
+
+  return NextResponse.next();
 }
+
+module.exports = {
+  middleware,
+  config: {
+    matcher: ['/*'],
+  },
+};
