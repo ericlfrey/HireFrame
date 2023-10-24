@@ -1,17 +1,10 @@
-const express = require('express');
+const { NextRequest, NextResponse } = require('next/server');
 
-const app = express();
+export default function Middleware(request) {
+  const isHttps = request.headers.get('x-forwarded-proto')?.split(',')[0] === 'https';
 
-app.use((req, res, next) => {
-  if (req.headers['x-forwarded-proto'] !== 'https') {
-    res.redirect(`https://${req.headers.host}${req.url}`);
-  } else {
-    next();
+  if (!isHttps) {
+    const newUrl = new URL(`https://${request.headers.get('host')}${request.url}`);
+    return NextResponse.redirect(newUrl.href, 301);
   }
-});
-
-// Your other routes and middleware for "HireFrame" go here
-
-app.listen(process.env.PORT || 3000, () => {
-  console.log('Server is running');
-});
+}
