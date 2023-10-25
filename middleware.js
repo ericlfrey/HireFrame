@@ -1,16 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-// type Environment = "production" | "development" | "other";
-
 function middleware(request) {
   const currentEnv = process.env.NODE_ENV;
   const isLocalhost = request.headers.get('host')?.includes('localhost');
-  const isProtocolHTTP = request.headers.get('x-forwarded-proto') === 'http';
+  const isHttp = request.headers.get('x-forwarded-proto') === 'http';
 
-  if (currentEnv === 'production' && !isLocalhost && isProtocolHTTP) {
+  if (currentEnv === 'production' && !isLocalhost && isHttp) {
+    // Redirect to the HTTPS version with the same host, pathname, and search
     return NextResponse.redirect(
-      `https://${request.headers.get('host')}${request.nextUrl.pathname}${request?.nextUrl?.search || ''
-      }`,
+      `https://${request.headers.get('host')}${request.nextUrl.pathname}${request.nextUrl.search || ''}`,
       301,
     );
   }
